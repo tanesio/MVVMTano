@@ -7,7 +7,7 @@
 
 import Foundation
 
-class viewModelList {
+class ViewModelList {
     
     // CREAR MECANISMO PARA ENLAZAR LO QUE SERIA LA VISTA CON ESTE MODELO DE LA VISTA
     var refreshData = { () -> () in }

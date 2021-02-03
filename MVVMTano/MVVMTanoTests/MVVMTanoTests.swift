@@ -9,25 +9,39 @@ import XCTest
 @testable import MVVMTano
 
 class MVVMTanoTests: XCTestCase {
+    
+    // MARK : - Tests
+    
+    var list: List?
+    var listViewModel: ViewModelList?
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        list = List(userId: 0, id: 0, title: "My Title", body: "My Text Body")
+        listViewModel = ViewModelList()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        list = nil
+        listViewModel = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    // MARK : - Tests
+    
+    func testViewModelList() {
+        guard let list = self.list else {
+            XCTFail("list invalid")
+            return
         }
+        
+        listViewModel?.dataArray = [list]
+        XCTAssertNotNil(listViewModel, "listViewModel is invalid")
+        
+        guard let item = listViewModel?.dataArray.first else {
+            XCTFail("listViewModel invalid item")
+            return
+        }
+        
+        XCTAssertEqual(listViewModel?.dataArray.count, 1, "should be 1")
+        XCTAssertEqual(list.title, item.title)
     }
-
 }

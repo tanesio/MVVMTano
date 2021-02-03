@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel = viewModelList()
+    var viewModel = ViewModelList()
 //    var viewCell = CustomCell()
     
     override func viewDidLoad() {
